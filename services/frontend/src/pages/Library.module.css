@@ -1,0 +1,70 @@
+.page {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  position: sticky;
+  top: 76px;
+}
+
+.search {
+  width: 100%;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.filterGroup label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.filterGroup select { width: 100%; }
+
+.filterBtn {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  text-align: left;
+  transition: all 0.15s;
+  text-transform: capitalize;
+}
+
+.filterBtn:hover { color: var(--text); border-color: var(--accent); }
+.active { background: var(--accent) !important; color: #fff !important; border-color: var(--accent) !important; }
+
+.content { flex: 1; min-width: 0; }
+
+.count {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.empty { color: var(--text-dim); font-style: italic; }

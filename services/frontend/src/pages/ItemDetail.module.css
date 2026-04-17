@@ -1,0 +1,83 @@
+.loading { color: var(--text-dim); }
+
+.page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.poster { width: 100%; aspect-ratio: 2/3; }
+
+.right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.title { font-size: 1.75rem; font-weight: 700; }
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.description { color: var(--text-dim); line-height: 1.6; }
+
+.showInfo { font-size: 0.85rem; color: var(--text-dim); }
+
+.section { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.section h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.statusBtns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.statusBtn {
+  padding: 0.5rem 1rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+
+.statusBtn:hover { border-color: var(--accent); color: var(--text); }
+.activeStatus { border-color: var(--accent); color: var(--text); background: var(--surface); font-weight: 600; }
+
+.row { display: flex; gap: 1rem; }
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.field label { font-size: 0.8rem; color: var(--text-dim); }
+
+.field input { width: 100px; }
+
+.notes { width: 100%; resize: vertical; }
+
+.deleteBtn {
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.deleteBtn:hover { background: #ff6b6b; color: #fff; }
+
+.updated { font-size: 0.8rem; color: var(--text-dim); }

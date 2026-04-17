@@ -1,0 +1,14 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.plan     { background: rgba(30, 100, 200, 0.2); color: #6ab3ff; }
+.watching { background: rgba(220, 180, 0, 0.2);  color: #ffd166; }
+.watched  { background: rgba(50, 200, 100, 0.2); color: #6fefb0; }

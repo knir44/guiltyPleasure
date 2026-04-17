@@ -1,0 +1,27 @@
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.star {
+  background: none;
+  padding: 0;
+  font-size: 1.25rem;
+  color: var(--border);
+  transition: color 0.1s, transform 0.1s;
+  line-height: 1;
+}
+
+.star:not(:disabled):hover {
+  color: #ffd166;
+  transform: scale(1.2);
+}
+
+.filled { color: #ffd166; }
+
+.label {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}

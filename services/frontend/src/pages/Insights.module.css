@@ -1,0 +1,87 @@
+.page { display: flex; flex-direction: column; gap: 2rem; }
+
+.heading { font-size: 1.5rem; font-weight: 700; }
+
+.summaryCards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 120px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.cardNum {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.cardLabel {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.chart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.chartTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.empty { color: var(--text-dim); font-style: italic; }
+
+.topRated {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.topList { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.topItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--surface2);
+  border-radius: var(--radius);
+}
+
+.rank {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 36px;
+}
+
+.topInfo { flex: 1; }
+
+.topTitle { font-weight: 600; display: block; }
+
+.topMeta { font-size: 0.8rem; color: var(--text-dim); text-transform: capitalize; }
+
+.topRating { color: #ffd166; font-weight: 700; font-size: 1rem; }

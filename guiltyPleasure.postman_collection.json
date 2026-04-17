@@ -1,0 +1,161 @@
+{
+  "info": {
+    "name": "guiltyPleasure",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base", "value": "http://localhost" }
+  ],
+  "item": [
+    {
+      "name": "Tracker Service",
+      "item": [
+        {
+          "name": "Get all items",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker",
+            "description": "Supports query params: status, type, genre_id, year, sort, order"
+          }
+        },
+        {
+          "name": "Get all - watching only",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker?status=watching"
+          }
+        },
+        {
+          "name": "Get all - movies sorted by rating",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker?type=movie&sort=rating&order=desc"
+          }
+        },
+        {
+          "name": "Get item by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/1"
+          }
+        },
+        {
+          "name": "Add new movie",
+          "request": {
+            "method": "POST",
+            "url": "{{base}}/api/tracker",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Godfather\",\n  \"type\": \"movie\",\n  \"genre_id\": 2,\n  \"year\": 1972,\n  \"director\": \"Francis Ford Coppola\",\n  \"description\": \"The aging patriarch of an organized crime dynasty transfers control to his reluctant son.\",\n  \"status\": \"plan\",\n  \"notes\": \"Classic I need to rewatch\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Add new show",
+          "request": {
+            "method": "POST",
+            "url": "{{base}}/api/tracker",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Bear\",\n  \"type\": \"show\",\n  \"genre_id\": 2,\n  \"year\": 2022,\n  \"total_seasons\": 3,\n  \"total_episodes\": 28,\n  \"status\": \"watching\",\n  \"current_season\": 1,\n  \"current_episode\": 4\n}"
+            }
+          }
+        },
+        {
+          "name": "Update status to watched",
+          "request": {
+            "method": "PUT",
+            "url": "{{base}}/api/tracker/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"watched\",\n  \"rating\": 9,\n  \"notes\": \"Amazing film\",\n  \"finished_date\": \"2026-04-17\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update episode progress",
+          "request": {
+            "method": "PUT",
+            "url": "{{base}}/api/tracker/2",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"watching\",\n  \"current_season\": 3,\n  \"current_episode\": 7\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete item",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base}}/api/tracker/1"
+          }
+        },
+        {
+          "name": "Get genres",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/genres"
+          }
+        },
+        {
+          "name": "Now watching",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/now"
+          }
+        },
+        {
+          "name": "Up next",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/next"
+          }
+        },
+      ]
+    },
+    {
+      "name": "Insights Service",
+      "item": [
+        {
+          "name": "Summary",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/summary"
+          }
+        },
+        {
+          "name": "By genre",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/by-genre"
+          }
+        },
+        {
+          "name": "By type",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/by-type"
+          }
+        },
+        {
+          "name": "Monthly (last 12 months)",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/monthly?months=12"
+          }
+        },
+        {
+          "name": "Top rated (top 10)",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/top-rated?limit=10"
+          }
+        },
+      ]
+    }
+  ]
+}

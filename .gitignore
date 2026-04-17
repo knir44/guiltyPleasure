@@ -1,0 +1,24 @@
+# Environment
+.env
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Docker volumes
+postgres_data/
+mongo_data/
+pgadmin_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+.vite/
