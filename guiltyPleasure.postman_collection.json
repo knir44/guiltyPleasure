@@ -8,7 +8,7 @@
   ],
   "item": [
     {
-      "name": "Tracker Service",
+      "name": "Tracker Service (PostgreSQL)",
       "item": [
         {
           "name": "Get all items",
@@ -26,6 +26,20 @@
           }
         },
         {
+          "name": "Get all - watched only",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker?status=watched"
+          }
+        },
+        {
+          "name": "Get all - plan only",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker?status=plan"
+          }
+        },
+        {
           "name": "Get all - movies sorted by rating",
           "request": {
             "method": "GET",
@@ -33,10 +47,38 @@
           }
         },
         {
+          "name": "Get all - shows only",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker?type=show"
+          }
+        },
+        {
           "name": "Get item by ID",
           "request": {
             "method": "GET",
             "url": "{{base}}/api/tracker/1"
+          }
+        },
+        {
+          "name": "Get genres",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/genres"
+          }
+        },
+        {
+          "name": "Now watching",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/now"
+          }
+        },
+        {
+          "name": "Up next",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/tracker/next"
           }
         },
         {
@@ -64,6 +106,18 @@
           }
         },
         {
+          "name": "Add movie - status watched (triggers MongoDB event)",
+          "request": {
+            "method": "POST",
+            "url": "{{base}}/api/tracker",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Parasite\",\n  \"type\": \"movie\",\n  \"genre_id\": 6,\n  \"year\": 2019,\n  \"director\": \"Bong Joon-ho\",\n  \"status\": \"watched\",\n  \"rating\": 10,\n  \"notes\": \"Masterpiece\",\n  \"finished_date\": \"2026-04-18\"\n}"
+            }
+          }
+        },
+        {
           "name": "Update status to watched",
           "request": {
             "method": "PUT",
@@ -71,7 +125,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"status\": \"watched\",\n  \"rating\": 9,\n  \"notes\": \"Amazing film\",\n  \"finished_date\": \"2026-04-17\"\n}"
+              "raw": "{\n  \"status\": \"watched\",\n  \"rating\": 9,\n  \"notes\": \"Amazing film\",\n  \"finished_date\": \"2026-04-18\"\n}"
             }
           }
         },
@@ -88,73 +142,93 @@
           }
         },
         {
+          "name": "Update rating only",
+          "request": {
+            "method": "PUT",
+            "url": "{{base}}/api/tracker/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 8\n}"
+            }
+          }
+        },
+        {
+          "name": "Update notes only",
+          "request": {
+            "method": "PUT",
+            "url": "{{base}}/api/tracker/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Updated my thoughts on this one\"\n}"
+            }
+          }
+        },
+        {
           "name": "Delete item",
           "request": {
             "method": "DELETE",
             "url": "{{base}}/api/tracker/1"
           }
-        },
-        {
-          "name": "Get genres",
-          "request": {
-            "method": "GET",
-            "url": "{{base}}/api/tracker/genres"
-          }
-        },
-        {
-          "name": "Now watching",
-          "request": {
-            "method": "GET",
-            "url": "{{base}}/api/tracker/now"
-          }
-        },
-        {
-          "name": "Up next",
-          "request": {
-            "method": "GET",
-            "url": "{{base}}/api/tracker/next"
-          }
-        },
+        }
       ]
     },
     {
-      "name": "Insights Service",
+      "name": "Insights Service (MongoDB)",
       "item": [
         {
           "name": "Summary",
           "request": {
             "method": "GET",
-            "url": "{{base}}/api/insights/summary"
+            "url": "{{base}}/api/insights/summary",
+            "description": "Returns: total_watched, total_movies, total_shows, avg_rating, this_month_count"
           }
         },
         {
           "name": "By genre",
           "request": {
             "method": "GET",
-            "url": "{{base}}/api/insights/by-genre"
+            "url": "{{base}}/api/insights/by-genre",
+            "description": "Returns count and avg_rating per genre, sorted by count"
           }
         },
         {
           "name": "By type",
           "request": {
             "method": "GET",
-            "url": "{{base}}/api/insights/by-type"
+            "url": "{{base}}/api/insights/by-type",
+            "description": "Returns movies vs shows breakdown with counts and avg ratings"
           }
         },
         {
-          "name": "Monthly (last 12 months)",
+          "name": "Monthly - last 12 months",
           "request": {
             "method": "GET",
             "url": "{{base}}/api/insights/monthly?months=12"
           }
         },
         {
-          "name": "Top rated (top 10)",
+          "name": "Monthly - last 6 months",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/monthly?months=6"
+          }
+        },
+        {
+          "name": "Top rated - top 10",
           "request": {
             "method": "GET",
             "url": "{{base}}/api/insights/top-rated?limit=10"
           }
         },
+        {
+          "name": "Top rated - top 5",
+          "request": {
+            "method": "GET",
+            "url": "{{base}}/api/insights/top-rated?limit=5"
+          }
+        }
       ]
     }
   ]
